@@ -1,0 +1,9 @@
+[Unit]
+Description=django Python1 daemon
+After=network.target
+
+[Service]
+WorkingDirectory=/home/python1/django-test
+ExecStart=/home/python1/django-test/bin/python3.6 manage.py runserver 0.0.0.0:8080
+
+

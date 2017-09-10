@@ -1,0 +1,4 @@
+---
+- hosts: virt-python1
+  roles:
+    - django

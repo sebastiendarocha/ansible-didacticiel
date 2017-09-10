@@ -1,0 +1,27 @@
+---
+- name: installation de django
+  pip:
+    name: django
+    virtualenv: /home/python1/django-test/
+    virtualenv_python: python3.6
+    
+- name: creation app django
+  command: /home/python1/django-test/bin/django-admin startproject www .
+  # idempotence !
+  args:
+    chdir: /home/python1/django-test
+    creates: /home/python1/django-test/www/
+
+- name: creer le dossier utilisateur de systemd
+  file:
+    state: directory
+    dest: /home/python1/.config/systemd/user/
+    recurse: yes
+    owner: python1
+    group: python1
+
+- name: installation du service systemd
+  copy:
+    src: files/django-python1.service
+    dest: /home/python1/.config/systemd/user/
+  notify: execution du serveur debug de django

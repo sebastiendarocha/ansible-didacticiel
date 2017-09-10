@@ -1,0 +1,9 @@
+---
+- name: execution du serveur debug de django
+  systemd: 
+    name: django-python1.service
+    state: restarted
+    user: yes
+    daemon_reload: yes
+    #enabled: true
+
