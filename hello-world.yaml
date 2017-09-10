@@ -1,0 +1,8 @@
+---
+- hosts: virt-python1
+  tasks:
+    - name: creation d'un fichier "hello-world.txt"
+      file:
+        path: /home/python1/hello-world.txt
+        state: touch
+        mode: 0755
